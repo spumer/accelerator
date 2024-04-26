@@ -23,6 +23,14 @@
 #define PLATFORM_ARCH_FOLDER ""
 #endif
 
+#ifndef SOURCEPAWN_LIB
+#ifdef PLATFORM_X64
+#define SOURCEPAWN_LIB "sourcepawn.vm."
+#else
+#define SOURCEPAWN_LIB "sourcepawn.jit.x86."
+#endif
+#endif
+
 #include <sp_vm_api.h>
 
 #include <IWebternet.h>
@@ -1206,7 +1214,7 @@ bool Accelerator::SDK_OnLoad(char *error, size_t maxlength, bool late)
 
 	do {
 		char spJitPath[512];
-		g_pSM->BuildPath(Path_SM, spJitPath, sizeof(spJitPath), "bin/" PLATFORM_ARCH_FOLDER "sourcepawn.jit.x86." PLATFORM_LIB_EXT);
+		g_pSM->BuildPath(Path_SM, spJitPath, sizeof(spJitPath), "bin/" PLATFORM_ARCH_FOLDER SOURCEPAWN_LIB PLATFORM_LIB_EXT);
 
 		char spJitError[255];
 		std::unique_ptr<ILibrary> spJit(libsys->OpenLibrary(spJitPath, spJitError, sizeof(spJitError)));
