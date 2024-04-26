@@ -136,7 +136,6 @@ class AcceleratorConfig(object):
   def configure_linux(self, cxx):
     cxx.defines += ['_LINUX', 'POSIX', '_GLIBCXX_USE_CXX11_ABI=0']
     
-    cxx.linkflags += ['-lm']
     if cxx.family == 'gcc':
       cxx.linkflags += ['-static-libgcc']
     elif cxx.family == 'clang':
