@@ -135,13 +135,6 @@ class AcceleratorConfig(object):
   
   def configure_linux(self, cxx):
     cxx.defines += ['_LINUX', 'POSIX', '_GLIBCXX_USE_CXX11_ABI=0']
-    
-    if cxx.family == 'gcc':
-      cxx.linkflags += ['-static-libgcc']
-    elif cxx.family == 'clang':
-      cxx.linkflags += ['-lgcc_eh']
-    cxx.linkflags += ['-static-libstdc++']
-
     return
   
   def configure_windows(self, cxx):
