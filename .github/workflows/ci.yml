@@ -27,8 +27,8 @@ jobs:
           - os: ubuntu-20.04
             cc: clang-8
             cxx: clang++-8
-            upload: true
-            upload-artifact-name: accelerator_linux.old
+            upload: false
+            upload-artifact-name: none
           - os: ubuntu-latest
             cc: clang
             cxx: clang++
@@ -37,8 +37,8 @@ jobs:
           - os: windows-2019
             cc: msvc
             cxx: msvc
-            upload: true
-            upload-artifact-name: accelerator_windows.old
+            upload: false
+            upload-artifact-name: none
           - os: windows-latest
             cc: msvc
             cxx: msvc
